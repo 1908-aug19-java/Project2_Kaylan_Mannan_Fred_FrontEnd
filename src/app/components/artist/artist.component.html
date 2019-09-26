@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink = "/search">Spotify Draft</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink = "/search" >Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink = "/profile" >Profile</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink = "/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink = "/">Log Out</a>
+              </li>
+          </ul>
+        </div>
+      </nav><br>
+<div *ngIf = "artist">
+    <header class = "artist-header">
+        <div *ngIf = "artist.images.length > 0">
+            <img class = "artist-thumb img-circle" src = "{{artist.images[0].url}}"/>
+        </div>
+        <h1>{{artist.name}}</h1>
+        <p *ngIf = "artist.genres.length>0">
+            Genres: <span *ngFor = "let genre of artist.genres">{{genre}}</span>
+        </p>
+</header>
+    <div class = "artist-albums">
+        <div class = "row">
+            <div *ngFor="let album of albums">
+                <div class = "col-md-3">
+                    <div class = "well album">
+                        <div *ngIf="album.images.length > 0">
+                            <img class = "album-thumb img-thumbnail" src = "{{album.images[0].url}}"/>
+                            <h4>{{album.name}}</h4>
+                            <a class = "btn btn-default btn-block" routerLink = "/album/{{album.id}}">Album Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
