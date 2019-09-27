@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../../../../User';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +9,30 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class LoginComponent implements OnInit {
 
-  user:User;
+  email:string;
+  password:string;
 
-  constructor(private spotifyService:SpotifyService) { }
+  constructor(private spotifyService:SpotifyService,
+              private router:Router) { }
 
   ngOnInit() {
   }
 
-  loginUser(username:string,password:string){
-        this.user.name = username;
-        this.user.password = password; 
-
-        this.spotifyService.loginUser(this.user)
-        .subscribe(res => res);
+  loginUser(){
+        this.email;
+        this.password; 
+        this.spotifyService.loginUser(this.email,this.password)  
+        .subscribe(res =>{
+            res;
+            console.log(res);
+            if(res!=null){
+              this.login();
+            }else{
+              location.reload;
+            }
+        });
+  }
+  login(){
+        this.router.navigate(['/search']);  
   }
 }

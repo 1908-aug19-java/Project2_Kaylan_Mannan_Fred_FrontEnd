@@ -1,16 +1,17 @@
 <div class = "row justify-content-center">
         <form class="form-login">
                 <img id  = "img" src = "https://cdn2.iconfinder.com/data/icons/flat-social-media-icons-1/2506/spotify.png"/><br><br>
-                <label [(ngModel)] = "name" name = "name" for="inputName" class="sr-only" ngDefaultControl>Name</label>
-                <input type="email" id="inputName" class="form-control" placeholder="Name" required autofocus>
-                <label [(ngModel)] = "email" name = "email" for="inputEmail" class="sr-only" ngDefaultControl>Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
+                
+                <input [(ngModel)] = "firstname" name = "firstname" type="text" class="form-control" placeholder="First Name" required autofocus>
+                <input [(ngModel)] = "lastname" name = "lastname" type="text" class="form-control" placeholder="Last Name" required autofocus>
+                <input [(ngModel)] = "username" name = "username" type="text" class="form-control" placeholder="Username" required autofocus>
+                <input [(ngModel)] = "email" name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <input [(ngModel)] = "password" name = "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div class="checkbox mb-3">
                 </div>
                 <div>
                         <input type = "button" class = "btn btn-primary btn-block" value = "Create User Account" (click) = "createUser()">
+                        <input type = "button" class = "btn btn-primary btn-block" value = "Return To Home" routerLink = "/">
                 </div>
         </form>
 </div>
