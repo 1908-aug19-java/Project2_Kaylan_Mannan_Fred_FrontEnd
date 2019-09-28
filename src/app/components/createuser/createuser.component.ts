@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./createuser.component.css']
 })
 export class CreateuserComponent implements OnInit {
-  user:User = {firstname: null,lastname:null,username:null, email: null,password:null};
+  user:User = {userId: null,firstname: null,lastname:null,username:null, email: null,password:null};
   firstname:string;
   lastname: string;
   username: string;
@@ -22,6 +22,7 @@ export class CreateuserComponent implements OnInit {
       private spotifyService:SpotifyService) { }
 
   ngOnInit() {
+    localStorage.clear();
   }
 
   createUser(){
@@ -34,6 +35,7 @@ export class CreateuserComponent implements OnInit {
     this.spotifyService.createUser(this.user)
     .subscribe(res =>{
       res
+      console.log(res.status);
       if(res.status==201){
         this.router.navigate(['/']);
         }else{

@@ -23,6 +23,7 @@ export class AlbumComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log(localStorage.getItem("token"));
     this.route.params.pipe(map(params=>params['id']))
     .subscribe((id)=>{
       this.spotifyService.getAlbum(id)
@@ -33,8 +34,8 @@ export class AlbumComponent implements OnInit {
   }
   addToPlaylist(str:string){
     this.playlist.push(str);   
-    
-
   }
-  
+  clearToken(){
+    localStorage.clear();
+  }
 }

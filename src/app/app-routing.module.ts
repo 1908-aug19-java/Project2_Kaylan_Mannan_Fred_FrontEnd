@@ -8,17 +8,18 @@ import { AlbumComponent } from './components/album/album.component';
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [{
-  path: "search",component: SearchComponent
+  path: "search",component: SearchComponent,canActivate:[LoginGuard]
 },{
-  path: "about", component: AboutComponent
+  path: "about", component: AboutComponent,canActivate:[LoginGuard]
 },{
-  path: "artist/:id", component: ArtistComponent
+  path: "artist/:id", component: ArtistComponent,canActivate:[LoginGuard]
 },{
-  path: "album/:id", component: AlbumComponent
+  path: "album/:id", component: AlbumComponent,canActivate:[LoginGuard]
 },{
-  path: "profile", component: UserhomeComponent
+  path: "profile", component: UserhomeComponent,canActivate:[LoginGuard]
 },{
   path: "", component: LoginComponent
 },{

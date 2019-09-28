@@ -16,11 +16,15 @@ export class SearchComponent implements OnInit {
   constructor(private spotifyService:SpotifyService) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem("token"));
   }
   searchMusic(){
     this.spotifyService.searchMusic(this.searchStr)
     .subscribe(res=>{
       this.searchRes = res;
     })
+  }
+  clearToken(){
+    localStorage.clear();
   }
 }

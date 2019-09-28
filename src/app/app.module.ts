@@ -15,6 +15,8 @@ import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,13 +27,14 @@ import { CreateuserComponent } from './components/createuser/createuser.componen
     AlbumComponent,
     UserhomeComponent,
     LoginComponent,
-    CreateuserComponent
+    CreateuserComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {User} from '../../../../User';
+import { Playlist } from '../../../../Playlist';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class SpotifyService {
 
     const headers = new HttpHeaders({
       Authorization:
-      'Bearer BQBQ28SvCJ9k-uWwObvynOPF3bXoVfSzzF4bobC1szbS0NnEU7LhzC7i15a7nRb5CYomzAkjBRz15ESMjts1DeaTgaRN8etCu94bG8x-ZQqF-a90EzER5bolu7d52P2ipkEW1BKEa4rMqMI'
+      'Bearer BQCTLyFJFHvyJqKsH1OjiXNz_pqPSlvUtuJ1i0EFEobHeUglWemDYq0hvtPvBszhq-Ei9k954wNgoQLlePXJYzckeAL9rgc-xjIVBpDL5KrnOvHGd1XGOIF-X2L05zwciZ1iYKT_Hi9wrdI'
     });
 
     return this.http.get(url, { headers });
@@ -58,6 +59,10 @@ export class SpotifyService {
     return this.http.post(url,user,{observe: 'response'});
 
   }
+
+  // createPlaylist(playlist:Playlist):Observable<Playlist>{
+  //   let url:string = 
+  // }
 
   
 }

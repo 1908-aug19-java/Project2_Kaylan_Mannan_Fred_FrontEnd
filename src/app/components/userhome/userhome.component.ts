@@ -13,5 +13,9 @@ export class UserhomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(localStorage.getItem("token"))
+  }
+  clearToken(){
+    localStorage.clear();
   }
 }

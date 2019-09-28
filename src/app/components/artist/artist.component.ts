@@ -20,6 +20,7 @@ export class ArtistComponent implements OnInit {
               private spotifyService:SpotifyService) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem("token"));
       this.route.params.pipe(map(params=>params['id']))
       .subscribe((id)=>{
         this.spotifyService.getArtist(id)
@@ -31,6 +32,9 @@ export class ArtistComponent implements OnInit {
           this.albums=albums['items'];
         })
       })
+  }
+  clearToken(){
+    localStorage.clear();
   }
 
 }

@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   email:string;
   password:string;
 
@@ -16,6 +15,8 @@ export class LoginComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit() {
+    localStorage.clear();
+    console.log(localStorage.getItem("token"));
   }
 
   loginUser(){
@@ -24,8 +25,9 @@ export class LoginComponent implements OnInit {
         this.spotifyService.loginUser(this.email,this.password)  
         .subscribe(res =>{
             res;
-            console.log(res);
-            if(res!=null){
+            localStorage.setItem("token", JSON.stringify(res.userId));
+            console.log(localStorage.getItem("token"));
+            if(res!=null){  
               this.login();
             }else{
               location.reload;
