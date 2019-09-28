@@ -10,7 +10,7 @@
 }
 
 .artist-thumb{
-    width:80px;
+    width:100px;
     height:auto;
     float:left;
     margin-right:10px;
@@ -29,6 +29,10 @@
     border: #666 1px solid;
 }
 
-.album-thumb{
+.album-thumb img-thumbnail{
     width: 100%;
+}
+
+#shrink{
+    width: 200px;
 }

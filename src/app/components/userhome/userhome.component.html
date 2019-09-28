@@ -27,5 +27,9 @@
 </h3>
 </Header>
   <div>
-      <h4>My Playlists</h4>
+      <h4>My Playlists</h4> 
+      <div *ngFor = "let name of playlist">
+          <p>{{name}}</p>
+          <p *ngFor = "let song of songId">{{song}}</p>
+      </div>
   </div>

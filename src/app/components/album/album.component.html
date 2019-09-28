@@ -20,6 +20,7 @@
           </ul>
         </div>
       </nav>
+      <br>
 <div id = "album" *ngIf = "album">
     <header class = "album-header">
         <div class = "row">
@@ -45,6 +46,7 @@
             <div class = "well">              
                 <h5 >{{track.track_number}} - {{track.name}} &nbsp;&nbsp; <button class="btn add btn-secondary" (click) = "addToPlaylist(track.id)">Add To Playlist</button></h5>
                 <a *ngIf = "track.preview_url!=null" href = "{{track.preview_url}}" target = "_blank" >Preview Track</a>
+                <p>{{track.id}}</p>
             </div>
         </div>
     </div>

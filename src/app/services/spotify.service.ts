@@ -16,7 +16,7 @@ export class SpotifyService {
 
     const headers = new HttpHeaders({
       Authorization:
-      'Bearer BQCTLyFJFHvyJqKsH1OjiXNz_pqPSlvUtuJ1i0EFEobHeUglWemDYq0hvtPvBszhq-Ei9k954wNgoQLlePXJYzckeAL9rgc-xjIVBpDL5KrnOvHGd1XGOIF-X2L05zwciZ1iYKT_Hi9wrdI'
+      'Bearer BQANjIaodiLaXy2Hcfpv7H0vV9q4rZnlBKL9QxdIoftUK0GMTuZ2s1lm33AQquqzCscX7CNYmrTR1cWirXdF4KKYD2bOp41CCqEju6oszMycDrAuCEhju6FxY8_KD604h0UsXg4DzEviOjk'
     });
 
     return this.http.get(url, { headers });
@@ -49,13 +49,13 @@ export class SpotifyService {
   }
 
   loginUser(email:string,password:string):Observable<User>{
-   let url:string = `http://localhost:8082/login?email=${email}&password=${password}`;
+   let url:string = `http://localhost:8080/login?email=${email}&password=${password}`;
    
    return this.http.post<User>(url,User);
   }
 
   createUser(user:User):Observable<any>{
-    let url:string = 'http://localhost:8082/users'; 
+    let url:string = 'http://localhost:8080/users'; 
     return this.http.post(url,user,{observe: 'response'});
 
   }
@@ -63,6 +63,15 @@ export class SpotifyService {
   // createPlaylist(playlist:Playlist):Observable<Playlist>{
   //   let url:string = 
   // }
+
+  getPlaylist(id:number):Observable<any>{
+    let url:string = `http://localhost:8080/playlists/users/${id}`;
+    return this.http.get(url,).pipe(map(res=>res));
+  }
+   getSongByPlaylist(id:number):Observable<any>{
+     let url:string = `http://localhost:8080/songs/playlists/${id}`;
+     return this.http.get(url).pipe(map(res => res));
+   }
 
   
 }
