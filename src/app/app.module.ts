@@ -14,6 +14,7 @@ import { AlbumComponent } from './components/album/album.component';
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
+import { SongsComponent } from './component/songs/songs.component';
 
 
 
@@ -28,6 +29,7 @@ import { CreateuserComponent } from './components/createuser/createuser.componen
     UserhomeComponent,
     LoginComponent,
     CreateuserComponent,
+    SongsComponent,
 
   ],
   imports: [

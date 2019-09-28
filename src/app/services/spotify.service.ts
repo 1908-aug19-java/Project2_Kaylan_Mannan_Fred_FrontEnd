@@ -6,6 +6,7 @@ import {User} from '../../../../User';
 import { Playlist } from '../../../../Playlist';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,7 +69,7 @@ export class SpotifyService {
     let url:string = `http://localhost:8080/playlists/users/${id}`;
     return this.http.get(url,).pipe(map(res=>res));
   }
-   getSongByPlaylist(id:number):Observable<any>{
+   getSongByPlaylistId(id:number):Observable<any>{
      let url:string = `http://localhost:8080/songs/playlists/${id}`;
      return this.http.get(url).pipe(map(res => res));
    }
