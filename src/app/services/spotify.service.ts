@@ -17,7 +17,7 @@ export class SpotifyService {
 
     const headers = new HttpHeaders({
       Authorization:
-      'Bearer BQANjIaodiLaXy2Hcfpv7H0vV9q4rZnlBKL9QxdIoftUK0GMTuZ2s1lm33AQquqzCscX7CNYmrTR1cWirXdF4KKYD2bOp41CCqEju6oszMycDrAuCEhju6FxY8_KD604h0UsXg4DzEviOjk'
+      'Bearer BQB2isg10Xnt1k2RAbgVHRX4jcN9v3cloYdkqrdFM-kvhFfvOoah29dxj0kA1GJBg5nldVMNCTswg0BGg3hFbW7BRxvBP1lO3fBwuFlYcyv5xRnOOKj1i_Fc8bCyRqfb6NXB2fU4tykQHbU'
     });
 
     return this.http.get(url, { headers });
@@ -50,29 +50,45 @@ export class SpotifyService {
   }
 
   loginUser(email:string,password:string):Observable<User>{
-   let url:string = `http://localhost:8080/login?email=${email}&password=${password}`;
+   let url:string = `http://localhost:8082/login?email=${email}&password=${password}`;
    
    return this.http.post<User>(url,User);
   }
 
   createUser(user:User):Observable<any>{
-    let url:string = 'http://localhost:8080/users'; 
+    let url:string = 'http://localhost:8082/users'; 
     return this.http.post(url,user,{observe: 'response'});
 
   }
 
-  // createPlaylist(playlist:Playlist):Observable<Playlist>{
-  //   let url:string = 
-  // }
+  createPlaylist(id:any,name:any):Observable<any>{
+    let url:string = `http://localhost:8082/playlists?playlistName=${name}&userId=${id}`
+    return this.http.post(url,{observe:'response'})
+  }
 
   getPlaylist(id:number):Observable<any>{
-    let url:string = `http://localhost:8080/playlists/users/${id}`;
+    let url:string = `http://localhost:8082/users/${id}/playlists`;
     return this.http.get(url,).pipe(map(res=>res));
   }
-   getSongByPlaylistId(id:number):Observable<any>{
-     let url:string = `http://localhost:8080/songs/playlists/${id}`;
+   getSongByPlaylistId(id:any):Observable<any>{
+     let url:string = `http://localhost:8082/songs/playlists/${id}`;
      return this.http.get(url).pipe(map(res => res));
    }
+   convertSongId(id:any){
+      return this.getQuery(`tracks/${id}`)
+      .pipe(map(res=>res));
+   }
+   addToPlaylist(playlistId:any,songName:string,artistName:string,spotifySongId:any){
+      let url:string = `http://localhost:8082/songs?playlistId=${playlistId}&songName=${songName}&artistName=${artistName}&spotifySongId=${spotifySongId}`;
+      return this.http.post(url,{observe:'response'});
+   }
+
+   getUsers(userName:string){
+     let url:string = `http://localhost:8082/usernames/${userName}`;
+     return this.http.get(url);
+   }
+
+   
 
   
 }

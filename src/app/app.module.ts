@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { SearchComponent } from './components/search/search.component';
 
@@ -14,14 +13,13 @@ import { AlbumComponent } from './components/album/album.component';
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
-import { SongsComponent } from './component/songs/songs.component';
+import { SharingComponent } from './components/sharing/sharing.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     AboutComponent,
     SearchComponent,
     ArtistComponent,
@@ -29,7 +27,7 @@ import { SongsComponent } from './component/songs/songs.component';
     UserhomeComponent,
     LoginComponent,
     CreateuserComponent,
-    SongsComponent,
+    SharingComponent,
 
   ],
   imports: [

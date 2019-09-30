@@ -23,26 +23,23 @@
           </ul>
         </div>
       </nav>
-      <br>
-<Header>
-<h3>
-  User Profile Home
-</h3>
-</Header>
-  <div>
-      <button (click) = "createPlaylist()" class ="btn btn-primary btn-sm">Create Playlist</button>&nbsp;
-      <input type = "text" [(ngModel)] = "playlistName" name = "playlistName"/>
-  </div>
-  <br>
-  <div>
-    <h5>My Playlists</h5>
-  </div>
-  <div class = "row"  >
-    <div class = "col" *ngFor = "let up of userPlaylist.playlists">
-        <h6>{{up.name}}</h6>
-        <p *ngFor = "let song of up.songs">{{song.name}} - {{song.artist}}</p>
-    </div>
-  </div>
-    
 
-  
+<h1 class = "display-3">Search Users</h1>
+      <p class = "lead">Explore user playlists!</p>
+  <form>
+    <div class = "form-group">
+        <input type = "text" name = "searchUsr" [(ngModel)] = "searchUsr" (keyup) = "searchUsers()" class = "form-control" placeholder="Search Users..."/>
+    </div>
+  </form>
+
+ <!-- <div *ngIf = "searchUsr">
+    <div *ngFor = "let usr of searchUsr">
+        <div class = "row">
+            <div class = "col-md-12">
+                <div class = "search-res well">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>--> 

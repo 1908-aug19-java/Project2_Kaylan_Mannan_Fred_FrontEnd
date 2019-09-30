@@ -9,6 +9,7 @@ import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
 import { LoginGuard } from './guards/login.guard';
+import { SharingComponent } from './components/sharing/sharing.component';
 
 const routes: Routes = [{
   path: "search",component: SearchComponent,canActivate:[LoginGuard]
@@ -24,6 +25,8 @@ const routes: Routes = [{
   path: "", component: LoginComponent
 },{
   path: "create", component: CreateuserComponent
+},{
+  path: "share", component: SharingComponent,canActivate:[LoginGuard]
 }];
 
 @NgModule({

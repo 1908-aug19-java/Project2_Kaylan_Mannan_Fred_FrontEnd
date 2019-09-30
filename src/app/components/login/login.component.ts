@@ -29,10 +29,8 @@ export class LoginComponent implements OnInit {
             console.log(localStorage.getItem("token"));
             if(res!=null){  
               this.login();
-            }else{
-              location.reload;
             }
-        });
+        });   
   }
   login(){
         this.router.navigate(['/search']);  

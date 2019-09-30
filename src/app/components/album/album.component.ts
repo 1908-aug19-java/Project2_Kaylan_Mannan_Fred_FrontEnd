@@ -3,7 +3,8 @@ import {Playlist} from '../../../../../Playlist';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import {ActivatedRoute} from '@angular/router';
 import { map } from 'rxjs/operators';
-import { element } from 'protractor';
+import { Song } from '../../../../../Song';
+
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -15,27 +16,44 @@ export class AlbumComponent implements OnInit {
   hidden:boolean = false;
   id:string;
   album:any;
-  playlist:string[] = [];
-
+ playlists:Playlist[] = [];
+ song:Song[] = [];
+  userId:number = Number.parseInt(localStorage.getItem("token"),10);
+  playlistId:any;
 
   constructor(private route:ActivatedRoute,
               private spotifyService:SpotifyService) { }
 
 
   ngOnInit() {
-    console.log(localStorage.getItem("token"));
     this.route.params.pipe(map(params=>params['id']))
     .subscribe((id)=>{
       this.spotifyService.getAlbum(id)
-      .subscribe(album=>{
+      .subscribe(album=>{       
         this.album= album;
+        this.song['artist'] = this.album.artists[0].name;
+        console.log(this.album)
+      })
+
+
+      this.spotifyService.getPlaylist(this.userId)
+      .subscribe(res=>{res
+        this.playlists = res.playlists
       })
     })
   }
-  addToPlaylist(str:string){
-    this.playlist.push(str);   
-  }
+
   clearToken(){
     localStorage.clear();
+  }
+
+  addToPlaylist(id:any,name:string){
+    console.log(this.song['artist']);
+    this.spotifyService.addToPlaylist(this.playlistId,name,this.song['artist'],id)
+    .subscribe(res=>{res
+        console.log(res)
+    })
+
+      location.reload();
   }
 }

@@ -35,6 +35,7 @@ export class CreateuserComponent implements OnInit {
     this.spotifyService.createUser(this.user)
     .subscribe(res =>{
       res
+      console.log(res);
       console.log(res.status);
       if(res.status==201){
         this.router.navigate(['/']);
