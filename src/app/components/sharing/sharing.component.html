@@ -1,45 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Spotify Draft</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" routerLink = "/search" >Home</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" routerLink = "/profile" >Profile</a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" routerLink = "/share" >Browse Users</a>
-                </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink = "/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink = "/" (click) = "clearToken()">Log Out</a>
-              </li>
-          </ul>
-        </div>
-      </nav>
+<app-navbar></app-navbar><br>
 
-<h1 class = "display-3">Search Users</h1>
-      <p class = "lead">Explore user playlists!</p>
+<h1 class = "display-3">Explore Users</h1>
+      <p class = "lead">Check out what other users are listening to...</p>
   <form>
     <div class = "form-group">
         <input type = "text" name = "searchUsr" [(ngModel)] = "searchUsr" (keyup) = "searchUsers()" class = "form-control" placeholder="Search Users..."/>
     </div>
   </form>
 
- <!-- <div *ngIf = "searchUsr">
-    <div *ngFor = "let usr of searchUsr">
+ <div *ngIf = "searchUsr">
+    <div *ngFor = "let usr of user.user">
         <div class = "row">
             <div class = "col-md-12">
                 <div class = "search-res well">
-                
+                      <h4><a routerLink = "/users/{{usr.userId}}">{{usr.username}}</a></h4>
                 </div>
             </div>
         </div>
     </div>
-</div>--> 
+</div>

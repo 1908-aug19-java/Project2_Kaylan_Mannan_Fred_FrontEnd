@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Playlist} from '../../../../../Playlist';
+import {Playlist} from 'Models/Playlist';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import {ActivatedRoute} from '@angular/router';
 import { map } from 'rxjs/operators';
-import { Song } from '../../../../../Song';
+import { Song } from 'Models/Song';
 
 @Component({
   selector: 'app-album',
@@ -32,7 +32,6 @@ export class AlbumComponent implements OnInit {
       .subscribe(album=>{       
         this.album= album;
         this.song['artist'] = this.album.artists[0].name;
-        console.log(this.album)
       })
 
 
@@ -48,10 +47,8 @@ export class AlbumComponent implements OnInit {
   }
 
   addToPlaylist(id:any,name:string){
-    console.log(this.song['artist']);
     this.spotifyService.addToPlaylist(this.playlistId,name,this.song['artist'],id)
     .subscribe(res=>{res
-        console.log(res)
     })
 
       location.reload();

@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
 import { LoginGuard } from './guards/login.guard';
 import { SharingComponent } from './components/sharing/sharing.component';
+import { SearchUserComponent } from './components/search-user/search-user.component';
+import { SpotlightComponent } from './components/spotlight/spotlight.component';
 
 const routes: Routes = [{
   path: "search",component: SearchComponent,canActivate:[LoginGuard]
@@ -27,6 +29,10 @@ const routes: Routes = [{
   path: "create", component: CreateuserComponent
 },{
   path: "share", component: SharingComponent,canActivate:[LoginGuard]
+},{
+  path: "users/:id",component: SearchUserComponent,canActivate:[LoginGuard]  
+},{
+  path: "spotlight",component: SpotlightComponent
 }];
 
 @NgModule({

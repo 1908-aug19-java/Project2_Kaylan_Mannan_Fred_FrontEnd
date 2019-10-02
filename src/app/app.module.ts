@@ -14,6 +14,9 @@ import { UserhomeComponent } from './components/userhome/userhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
 import { SharingComponent } from './components/sharing/sharing.component';
+import{SearchUserComponent} from './components/search-user/search-user.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SpotlightComponent } from './components/spotlight/spotlight.component';
 
 
 
@@ -28,6 +31,9 @@ import { SharingComponent } from './components/sharing/sharing.component';
     LoginComponent,
     CreateuserComponent,
     SharingComponent,
+    SearchUserComponent,
+    NavbarComponent,
+    SpotlightComponent
 
   ],
   imports: [

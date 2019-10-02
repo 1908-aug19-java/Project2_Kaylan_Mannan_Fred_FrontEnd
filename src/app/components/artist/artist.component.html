@@ -1,28 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Spotify Draft</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink = "/search" >Home</a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" routerLink = "/profile" >Profile</a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" routerLink = "/share" >Browse Users</a>
-            </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink = "/about">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink = "/" (click) = "clearToken()">Log Out</a>
-          </li>
-      </ul>
-    </div>
-  </nav>
+<app-navbar></app-navbar>
       <br>
 <div *ngIf = "artist">
     <header class = "artist-header">
@@ -38,11 +14,11 @@
 
         <div class = "row">         
                 <div  *ngFor="let album of albums"  class = "col-sm-3">
-                  <div class = "artist-albums well">
+                  <div >
                     <div *ngIf="album.images.length > 0">
-                        <img src = "{{album.images[0].url}}" id = "shrink" class = "rounded"/>
-                        <h4>{{album.name}}</h4>
-                        <a class = "btn btn-primary" routerLink = "/album/{{album.id}}">Album Details</a><br><br>
+                        <h4 id = "albName">{{album.name}}</h4>
+                        <img src = "{{album.images[0].url}}" id = "shrink" class = "rounded-circle"/> <br>
+                        <a id = "moreDet" class = "btn btn-primary" routerLink = "/album/{{album.id}}">Album Details</a><br><br>
                     </div>
                     </div>
                 </div>           

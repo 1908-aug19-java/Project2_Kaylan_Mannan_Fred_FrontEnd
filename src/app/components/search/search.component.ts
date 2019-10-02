@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SpotifyService} from '../../services/spotify.service';
-import {Artist} from '../../../../../Artist';
+import {Artist} from 'Models/Artist';
+import { Album } from 'Models/Album';
 
 
 @Component({
@@ -10,14 +11,19 @@ import {Artist} from '../../../../../Artist';
 })
 export class SearchComponent implements OnInit {
   searchStr:string;
-  searchRes:Artist[];
-  
+  searchRes:Artist[] = [];
+  topTracks:Album[] = [];
 
   constructor(private spotifyService:SpotifyService) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem("token"));
+    this.spotifyService.browseTopTracks()
+    .subscribe(res=>{res
+      this.topTracks = res;
+      console.log(res);
+    })
   }
+
   searchMusic(){
     this.spotifyService.searchMusic(this.searchStr)
     .subscribe(res=>{

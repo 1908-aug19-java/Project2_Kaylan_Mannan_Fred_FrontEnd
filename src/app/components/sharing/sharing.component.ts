@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
-import {SearchUser} from '../../../../../SearchUser';
+import { SearchUser } from '../../../../Models/SearchUser';
+import { Playlist } from '../../../../Models/Playlist';
+import {Song} from '../../../../Models/Song'
 
 
 @Component({
@@ -11,6 +13,8 @@ import {SearchUser} from '../../../../../SearchUser';
 export class SharingComponent implements OnInit {
   searchUsr:string;
   user:SearchUser[] = [];
+  playlists:Playlist[] = [];
+  songs:Song[] = [];
   
 
   constructor(private spotifyService:SpotifyService) { }
@@ -20,8 +24,8 @@ export class SharingComponent implements OnInit {
 
   searchUsers(){
     this.spotifyService.getUsers(this.searchUsr)
-    .subscribe(res=>{res
-     console.log(res);
+    .subscribe(res=>{   
+      this.user['user'] = res;
     })
 
 }

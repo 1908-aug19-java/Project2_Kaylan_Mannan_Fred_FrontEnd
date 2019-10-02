@@ -10,7 +10,6 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(localStorage.getItem("token"));
   }
 
   clearToken(){

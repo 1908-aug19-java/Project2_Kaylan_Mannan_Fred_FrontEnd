@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {User} from '../../../../User';
-import { Playlist } from '../../../../Playlist';
 
 
 
@@ -17,17 +16,20 @@ export class SpotifyService {
 
     const headers = new HttpHeaders({
       Authorization:
-      'Bearer BQB2isg10Xnt1k2RAbgVHRX4jcN9v3cloYdkqrdFM-kvhFfvOoah29dxj0kA1GJBg5nldVMNCTswg0BGg3hFbW7BRxvBP1lO3fBwuFlYcyv5xRnOOKj1i_Fc8bCyRqfb6NXB2fU4tykQHbU'
+      'Bearer BQC1IxpmFbkHf7C0Trzr3PLsjRqF_hHMhyEgjIVk3AsCxCAiqWvKBDdrhYn4L4pXUh6huUhRAXKrgWta4k_EpEWDyVmdxN84aUspuplidwWMaEDD-5XsCAwtvTFIAQLYAsJ-OstbllEcN_g'
     });
 
     return this.http.get(url, { headers });
   }
 
-  private searchUrl:string;
-  private artistUrl:string;
+
 
   constructor(private http:HttpClient) { }
 
+  browseTopTracks(){
+    return this.getQuery(`browse/new-releases?country=AD&offset=0&limit=12`)
+    .pipe(map(res=>res['albums'].items));
+  }
 
   searchMusic(str:string,type='artist'){
     return this.getQuery(`search?query=${str}&offset=0&limit=20&type=${type}&market=US`)
@@ -40,7 +42,7 @@ export class SpotifyService {
   }
 
   getAlbums(id:string){
-    return this.getQuery(`artists/${id}/albums`)
+    return this.getQuery(`artists/${id}/albums?market=AD&limit=10`)
     .pipe(map(res=>res));
   }
 
@@ -86,6 +88,16 @@ export class SpotifyService {
    getUsers(userName:string){
      let url:string = `http://localhost:8082/usernames/${userName}`;
      return this.http.get(url);
+   }
+
+   deletePlaylist(playlistId:any,userId:any){
+    let url:string = `http://localhost:8082/playlists/${playlistId}?userId=${userId}`;
+    return this.http.delete(url,{observe: 'response'})  
+   }
+
+   deleteSong(songId:any,playlistId:any){
+     let url:string = `http://localhost:8082/songs/${songId}?playlistId=${playlistId}`; 
+     return this.http.delete(url,{observe:'response'})
    }
 
    

@@ -1,11 +1,9 @@
 #img{
-    height:15px;
+    height: 35px;
     width:auto;
-    margin-bottom: 2px;
     opacity:0;
 }
 
 #img:hover{
     opacity:1;
 }
-

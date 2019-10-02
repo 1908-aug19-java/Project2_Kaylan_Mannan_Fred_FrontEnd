@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../../../User';
+import { User } from '../../../../Models/User';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { Router } from '@angular/router';
 
@@ -35,8 +35,6 @@ export class CreateuserComponent implements OnInit {
     this.spotifyService.createUser(this.user)
     .subscribe(res =>{
       res
-      console.log(res);
-      console.log(res.status);
       if(res.status==201){
         this.router.navigate(['/']);
         }else{

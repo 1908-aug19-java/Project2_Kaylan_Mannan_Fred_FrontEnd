@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Artist} from '../../../../../Artist';
-import {Album} from '../../../../../Album';
+import {Album} from 'Models/Album';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import {ActivatedRoute} from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -20,7 +19,6 @@ export class ArtistComponent implements OnInit {
               private spotifyService:SpotifyService) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem("token"));
       this.route.params.pipe(map(params=>params['id']))
       .subscribe((id)=>{
         this.spotifyService.getArtist(id)

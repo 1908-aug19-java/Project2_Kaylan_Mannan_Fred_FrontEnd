@@ -1,8 +1,8 @@
 .form-signin{
-    margin-top: 125px;
+    margin-top: 75px;
 }
 #img{
-    margin-left: 45px;
-    width: 100px;
-    height: 100px;
+    height: 200px;
+    width: auto;
+    margin-left:20px;
 }

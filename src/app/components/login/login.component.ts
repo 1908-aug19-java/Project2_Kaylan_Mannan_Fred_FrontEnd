@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.clear();
-    console.log(localStorage.getItem("token"));
   }
 
   loginUser(){
@@ -26,13 +25,12 @@ export class LoginComponent implements OnInit {
         .subscribe(res =>{
             res;
             localStorage.setItem("token", JSON.stringify(res.userId));
-            console.log(localStorage.getItem("token"));
             if(res!=null){  
               this.login();
             }
         });   
   }
   login(){
-        this.router.navigate(['/search']);  
+        this.router.navigate(['/spotlight']);  
   }
 }
