@@ -16,7 +16,6 @@ export class SpotlightComponent implements OnInit {
     this.spotifyService.browseTopTracks()
     .subscribe(res=>{res
       this.topTracks = res;
-      console.log(res);
     })
   }
 
