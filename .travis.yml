@@ -1,18 +1,16 @@
-language: node_js
-node_js:
-  - "6.9"
-
-
+# whitelist
 branches:
   only:
     - master
-
+​
+language: node_js
+node_js:
+  - "9"
+dist: trusty
+sudo: required
 before_script:
-  
   - npm install -g @angular/cli
 script:
-  - cd CatchEmAllFrontEnd
-
-  - ng build --prod
-  - npm install sonar-scanner
-  - sonar-scanner -Dsonar.projectKey=1908-aug19-java_Project2-YinYu-Andres-Howard -Dsonar.organization=1908-aug19-java -Dsonar.sources=src -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+- ng lint
+- ng build --prod --base-href https://github.com/1908-aug19-java/project2-Kaylan_Mannan_Fred_FrontEnd
+- npm run sonar
